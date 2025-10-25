@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <p><a href="{{ url_for('main.upload') }}">Upload new file</a></p>
+  <h2>Files</h2>
+  <ul>
+  {% for f in files %}
+    <li>{{f.original_filename}} — <a href="{{ url_for('main.download', file_id=f.id) }}">Download</a> — uploaded {{f.uploaded_at}}</li>
+  {% else %}
+    <li>No files</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
